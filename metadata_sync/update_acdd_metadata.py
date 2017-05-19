@@ -183,7 +183,8 @@ def find_files(root_dir, file_template, extension_filter='.nc'):
         for subdir in subdirs:
             file_path_list += [file_path 
                                for file_path in glob(os.path.join(topdir, subdir, file_template))
-                               if os.path.splitext(file_path)[1] == extension_filter
+                               if os.path.isfile(file_path)
+                               and os.path.splitext(file_path)[1] == extension_filter
                                ]
     file_path_list = sorted(file_path_list)    
     return file_path_list
