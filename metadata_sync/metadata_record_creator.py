@@ -10,7 +10,10 @@ from xml.dom.minidom import parseString
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from metadata_sync.metadata import Metadata
 from minter import Minter
-from pprint import pprint
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)  # Initial logging level for this module
 
 
 class MetadataRecordCreator(object):
@@ -95,9 +98,9 @@ class MetadataRecordCreator(object):
                 
                 value_dict['distributions'].append(distribution_dict)
             except Exception as e:
-                print 'WARNING: Unable to create DOI distribution: %s' % e.message
+                logger.warning('WARNING: Unable to create DOI distribution: %s' % e.message)
         
-        #pprint(value_dict)
+        logger.debug('value_dict = %s' % value_dict)
         return self.prettify_xml(xml_template.render(**value_dict))
     
     def str2datetimelist(self, multi_datetime_string):
@@ -141,11 +144,11 @@ class MetadataRecordCreator(object):
     def output_xml(self):
         
         xml_text = self.get_xml_text()
-        #print xml_text
+        logger.debug('xml_text = %s' % xml_text)
         xml_file = open(self.xml_output_path, 'w')
         xml_file.write(xml_text)
         xml_file.close()
-        print 'XML written to %s' % self.xml_output_path
+        logger.info('XML written to %s' % self.xml_output_path)
         
         
     def get_doi(self, template_metadata_object, doi_minting_mode='test'):
@@ -171,9 +174,9 @@ class MetadataRecordCreator(object):
                 dataset_doi = 'http://dx.doi.org/' + str(new_doi)
                 return dataset_doi
             else:
-                print 'WARNING: DOI minting failed with response code %s' % ecat_id
+                logger.warning('WARNING: DOI minting failed with response code %s' % ecat_id)
         except Exception as e:
-            print 'WARNING: Error minting DOI: %s' % e.message
+            logger.warning('WARNING: Error minting DOI: %s' % e.message)
                    
         return None
     

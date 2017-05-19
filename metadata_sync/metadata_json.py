@@ -14,7 +14,7 @@ import hashlib
 import logging
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)  # Initial logging level for this module
+logger.setLevel(logging.INFO)  # Initial logging level for this module
 
 DEFAULT_EXCLUDED_EXTENSIONS = ['.bck', '.md5', '.uuid', '.json', '.tmp']
 
@@ -55,8 +55,7 @@ def get_utc_mtime(file_path):
 
 def get_filtered_md5sum_dict(md5dir, excluded_extensions=[]):
     '''
-    Simulate filtered Linux md5sum command
-    Code adapted from http://stackoverflow.com/questions/3431825/generating-an-md5-checksum-of-a-file
+    Simulate filtered Linux md5sum command on md5dir directory
     '''
     return get_md5sums([fname for fname in glob(os.path.join(md5dir, '*'))
                         if os.path.isfile(fname)

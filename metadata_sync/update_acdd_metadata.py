@@ -10,9 +10,8 @@ import logging
 import yaml
 import numpy as np
 import argparse
+import requests
 from glob import glob
-from pprint import pprint
-from owslib.csw import CatalogueServiceWeb
 
 from geophys_utils import NetCDFGridUtils, NetCDFLineUtils, get_spatial_ref_from_crs
 from metadata_sync.metadata import XMLMetadata
@@ -20,11 +19,10 @@ from geophys_utils import DataStats
 from metadata_json import write_json_metadata
 
 logger = logging.getLogger(__name__)
-
-logger.setLevel(logging.DEBUG)  # Initial logging level for this module
+logger.setLevel(logging.INFO)  # Initial logging level for this module
 
 #GA_GEONETWORK_URL = 'https://internal.ecat.ga.gov.au/geonetwork/srv/eng' # internally-visible eCat CSW
-GA_GEONETWORK_URL = 'https://ecat.ga.gov.au/geonetwork/srv/eng' # internally-visible eCat CSW
+GA_GEONETWORK_URL = 'http://ecat.ga.gov.au/geonetwork/srv/eng' # internally-visible eCat CSW
 DECIMAL_PLACES = 12 # Number of decimal places to which geometry values should be rounded
 
 # YAML file containing mapping from XML to ACDD expressed as a list of <acdd_attribute_name>:<xpath> tuples
@@ -56,6 +54,7 @@ def update_nc_metadata(netcdf_path, xml2nc_mapping,  do_stats=False, xml_path=No
     netcdf_dataset.close()
 
     write_json_metadata(uuid, os.path.dirname(netcdf_path))
+    logger.info('Finished updating ACDD metadata in netCDF file %s' % netcdf_path)
 
 def set_netcdf_metadata_attributes(netcdf_dataset, xml_metadata, xml2nc_mapping, to_crs='EPSG:4326', do_stats=False):
     '''
@@ -161,22 +160,13 @@ def set_netcdf_metadata_attributes(netcdf_dataset, xml_metadata, xml2nc_mapping,
     netcdf_dataset.sync()
     
 
-def get_xml_from_uuid(csw_url, uuid):
+def get_xml_from_uuid(geonetwork_url, uuid):
     '''
-    Function to return XML metadata from specified CSW URL using UUID as the search criterion
+    Function to return complete, native (ISO19115-3) XML text for metadata record with specified UUID
     '''
-    csw = CatalogueServiceWeb(csw_url)
-    assert csw.identification.type == 'CSW', '%s is not a valid CSW service' % csw_url
-
-    csw.getrecordbyid(id=[uuid], esn='full', outputschema='own')
-
-    # Ensure there is exactly one record found
-    assert len(
-        csw.records) > 0, 'No CSW records found for ID "%s"' % uuid
-    assert len(
-        csw.records) == 1, 'Multiple CSW records found for ID "%s"' % uuid
-
-    return csw.records[uuid].xml
+    xml_url = '%s/xml.metadata.get?uuid=%s' % (geonetwork_url, uuid)
+    logger.debug('URL = %s' % xml_url)
+    return requests.get(xml_url).content
 
 def find_files(root_dir, file_template, extension_filter='.nc'):
     '''
@@ -215,11 +205,11 @@ def main():
     xml2nc_mapping_file = open(xml2nc_mapping_path)
     xml2nc_mapping = yaml.load(xml2nc_mapping_file)
     xml2nc_mapping_file.close()
-    pprint(xml2nc_mapping)
+    logger.debug('xml2nc_mapping = %s' % xml2nc_mapping)
 
     
     for nc_path in find_files(args.netcdf_dir, args.file_template):
-        print 'Updating ACDD metadata in netCDF file %s' % nc_path
+        logger.info('Updating ACDD metadata in netCDF file %s' % nc_path)
         
         if args.xml_dir:
             xml_path = os.path.abspath(os.path.join(args.xml_dir, os.path.splitext(os.path.basename(nc_path))[0] + '.xml'))
@@ -229,7 +219,7 @@ def main():
         try:
             update_nc_metadata(nc_path, xml2nc_mapping,  do_stats=True, xml_path=xml_path)
         except Exception as e:
-            print 'Metadata update failed: %s' % e.message
+            logger.error('Metadata update failed: %s' % e.message)
 
 if __name__ == '__main__':
     main()

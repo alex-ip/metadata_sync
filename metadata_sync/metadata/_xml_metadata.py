@@ -13,7 +13,7 @@ import unicodedata
 from _metadata import Metadata
 
 logger = logging.getLogger('root.' + __name__)
-logger.setLevel(logging.DEBUG)  # Initial logging level for this module
+logger.setLevel(logging.INFO)  # Initial logging level for this module
 
 
 class XMLMetadata(Metadata):

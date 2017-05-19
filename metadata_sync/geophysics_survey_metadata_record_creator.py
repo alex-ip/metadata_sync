@@ -13,12 +13,17 @@ import os
 import uuid
 from datetime import datetime
 import argparse
+import logging
 from metadata_sync.metadata import SurveyMetadata, NetCDFMetadata #, JetCatMetadata
 from geophys_utils import NetCDFGridUtils, NetCDFLineUtils
 from metadata_sync.metadata import TemplateMetadata
 from metadata_json import read_json_metadata
 
 from metadata_sync.metadata_record_creator import MetadataRecordCreator
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)  # Initial logging level for this module
+
 
 # Try to import Oracle metadata reader - will fail if no cx_Oracle package installed
 try:
@@ -60,7 +65,7 @@ class GeophysicsSurveyMetadataRecordCreator(MetadataRecordCreator):
         # JetCat and Survey metadata can either take a list of survey IDs as source(s) or a filename from which to parse them
         try:
             survey_ids = self.netcdf_dataset.survey_id
-            print 'Survey ID "%s" found in netCDF attributes' % survey_ids
+            logger.info('Survey ID "%s" found in netCDF attributes' % survey_ids)
             source = [int(value_string.strip()) for value_string in survey_ids.split(',') if value_string.strip()]
         except:
             source = self.netcdf_path
@@ -72,12 +77,12 @@ class GeophysicsSurveyMetadataRecordCreator(MetadataRecordCreator):
             survey_metadata = SurveyMetadata(source)
             self.metadata_object.merge_root_metadata_from_object(survey_metadata)
         except Exception as e:
-            print 'Unable to read from Survey API:\n%s\nAttempting direct Oracle DB read' % e.message
+            logger.warning('Unable to read from Survey API:\n%s\nAttempting direct Oracle DB read' % e.message)
             try:
                 survey_metadata = ArgusMetadata(self.db_user, self.db_password, self.db_alias, source) # This will fail if we haven't been able to import ArgusMetadata 
                 self.metadata_object.merge_root_metadata('Survey', survey_metadata.metadata_dict, overwrite=True) # Fake Survey metadata from DB query
             except Exception as e:
-                print 'Unable to perform direct Oracle DB read: %s' % e.message
+                logger.error('Unable to perform direct Oracle DB read: %s' % e.message)
     
         survey_id = self.metadata_object.get_metadata(['Survey', 'SURVEYID'])
         try:
@@ -87,7 +92,7 @@ class GeophysicsSurveyMetadataRecordCreator(MetadataRecordCreator):
         except:
             self.netcdf_dataset.survey_id = str(survey_id)
             self.netcdf_dataset.sync()
-            print 'Survey ID %s written to netCDF file' % survey_id
+            logger.info('Survey ID %s written to netCDF file' % survey_id)
 
     
     def populate_template_values(self):
@@ -103,16 +108,16 @@ class GeophysicsSurveyMetadataRecordCreator(MetadataRecordCreator):
             try:
                 dataset_uuid = read_json_metadata(os.path.dirname(self.netcdf_path)).get('uuid')
             except:
-                print 'Unable to read UUID from metadata.json file'
+                logger.warning('Unable to read UUID from metadata.json file')
             
             if not dataset_uuid:
                 # Create a new UUID and write it to the netCDF file 
                 dataset_uuid = str(uuid.uuid4())
-                #print dataset_uuid, type(dataset_uuid)
+                logger.debug('dataset_uuid = %s' % dataset_uuid)
                 
             self.netcdf_dataset.uuid = dataset_uuid
             self.netcdf_dataset.sync()
-            print 'UUID %s written to netCDF file' % dataset_uuid
+            logger.info('UUID %s written to netCDF file' % dataset_uuid)
                 
             return dataset_uuid   
         
@@ -122,11 +127,11 @@ class GeophysicsSurveyMetadataRecordCreator(MetadataRecordCreator):
             dataset_doi = self.get_doi(template_metadata_object, 
                                        self.doi_minting_mode,
                                        ) 
-            print 'DOI "%s" minted' % dataset_doi
+            logger.info('DOI "%s" minted' % dataset_doi)
             if dataset_doi and self.doi_minting_mode == 'prod':
                 self.netcdf_dataset.doi = dataset_doi
                 self.netcdf_dataset.sync()
-                print 'Freshly-minted DOI "%s" written to NetCDF file' % dataset_doi
+                logger.info('Freshly-minted DOI "%s" written to NetCDF file' % dataset_doi)
         
             return dataset_doi
         
@@ -139,7 +144,7 @@ class GeophysicsSurveyMetadataRecordCreator(MetadataRecordCreator):
         
         try: # Try to treat this as a gridded dataset
             netcdf_utils = NetCDFGridUtils(self.netcdf_dataset)
-            print '%s is a gridded dataset' % self.netcdf_path
+            logger.info('%s is a gridded dataset' % self.netcdf_path)
         
             #calculated_values['CELLSIZE'] = str((nc_grid_utils.pixel_size[0] + nc_grid_utils.pixel_size[1]) / 2.0)
             calculated_values['CELLSIZE_M'] = str(int(round((netcdf_utils.nominal_pixel_metres[0] + netcdf_utils.nominal_pixel_metres[1]) / 20.0) * 10))
@@ -147,7 +152,7 @@ class GeophysicsSurveyMetadataRecordCreator(MetadataRecordCreator):
     
         except: # Try to treat this as a line dataset
             netcdf_utils = NetCDFLineUtils(self.netcdf_dataset)
-            print '%s is a line dataset' % self.netcdf_path
+            logger.info('%s is a line dataset' % self.netcdf_path)
             
         WGS84_extents = [min([coordinate[0] for coordinate in netcdf_utils.wgs84_bbox]),
                          min([coordinate[1] for coordinate in netcdf_utils.wgs84_bbox]),
@@ -225,7 +230,7 @@ def main():
                                                            db_password=args.db_password
                                                            )
         
-    # print record_creator.__dict__
+    logger.debug('record_creator.__dict__ = %s' % record_creator.__dict__)
     record_creator.output_xml()
 
 if __name__ == '__main__':

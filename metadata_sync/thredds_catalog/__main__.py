@@ -9,7 +9,7 @@ import os
 import re
 #from pprint import pprint
 import logging
-from geophys2netcdf.thredds_catalog import THREDDSCatalog
+from metadata_sync.thredds_catalog import THREDDSCatalog
 
 # Set handler for root logger to standard output
 #console_handler = logging.StreamHandler(sys.stdout)
@@ -18,8 +18,7 @@ from geophys2netcdf.thredds_catalog import THREDDSCatalog
 #console_handler.setFormatter(console_formatter)
 
 logger = logging.getLogger(__name__)
-#logger.addHandler(console_handler)
-logger.setLevel(logging.DEBUG)  # Logging level for this module
+logger.setLevel(logging.INFO)  # Logging level for this module
 
 def main():
     assert len(sys.argv) == 2, 'Usage: %s <thredds_catalog_url>|<yaml_file_path>' % sys.argv[0]
