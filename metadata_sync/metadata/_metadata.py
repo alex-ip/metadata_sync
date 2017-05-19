@@ -8,7 +8,7 @@ import pickle
 import logging
 import os
 
-logger = logging.getLogger('root.' + __name__)
+logger = logging.getLogger(__name__)
 
 
 class MetadataException(Exception):

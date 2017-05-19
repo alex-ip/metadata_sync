@@ -10,7 +10,7 @@ import logging
 import unicodedata
 from _xml_metadata import XMLMetadata
 
-logger = logging.getLogger('root.' + __name__)
+logger = logging.getLogger(__name__)
 
 
 class CSWMetadata(XMLMetadata):

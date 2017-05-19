@@ -9,7 +9,7 @@ import os
 import logging
 from _metadata import Metadata
 
-logger = logging.getLogger('root.' + __name__)
+logger = logging.getLogger(__name__)
 
 
 class ReportMetadata(Metadata):

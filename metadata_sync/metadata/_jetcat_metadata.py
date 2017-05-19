@@ -15,7 +15,7 @@ from pprint import pprint
 
 from _metadata import Metadata
 
-logger = logging.getLogger('root.' + __name__)
+logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)  # Initial logging level for this module
 
 class JetCatMetadata(Metadata):

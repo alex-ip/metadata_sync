@@ -1,7 +1,7 @@
 '''
-Created on 22Feb.,2017
+Created on 22 Feb, 2017
 
-@author: u76345
+@author: Alex Ip
 
 '''
 import sys
