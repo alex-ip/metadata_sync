@@ -4,14 +4,14 @@ Created on Apr 7, 2016
 
 @author: Alex Ip, Geoscience Australia
 '''
-import sys
-import subprocess
-import re
 import os
 import netCDF4
 import logging
 import yaml
 import numpy as np
+import argparse
+from glob import glob
+from pprint import pprint
 from owslib.csw import CatalogueServiceWeb
 
 from geophys_utils import NetCDFGridUtils, NetCDFLineUtils, get_spatial_ref_from_crs
@@ -26,6 +26,10 @@ logger.setLevel(logging.DEBUG)  # Initial logging level for this module
 #GA_GEONETWORK_URL = 'https://internal.ecat.ga.gov.au/geonetwork/srv/eng' # internally-visible eCat CSW
 GA_GEONETWORK_URL = 'https://ecat.ga.gov.au/geonetwork/srv/eng' # internally-visible eCat CSW
 DECIMAL_PLACES = 12 # Number of decimal places to which geometry values should be rounded
+
+# YAML file containing mapping from XML to ACDD expressed as a list of <acdd_attribute_name>:<xpath> tuples
+# Note: List may contain tuples with duplicate <acdd_attribute_name> values which are evaluated as a searchlist
+DEFAULT_MAPPING_FILE = 'ga_xml2acdd_mapping.yaml' 
 
 def update_nc_metadata(netcdf_path, xml2nc_mapping,  do_stats=False, xml_path=None):
     '''
@@ -66,10 +70,11 @@ def set_netcdf_metadata_attributes(netcdf_dataset, xml_metadata, xml2nc_mapping,
     except:
         netcdf_utils = NetCDFLineUtils(netcdf_dataset)
         
-    xmin = np.min(netcdf_utils.wgs84_bbox[:, 0])
-    ymin = np.min(netcdf_utils.wgs84_bbox[:, 1])
-    xmax = np.max(netcdf_utils.wgs84_bbox[:, 0])
-    ymax = np.max(netcdf_utils.wgs84_bbox[:, 1])
+    wgs84_bbox = np.array(netcdf_utils.wgs84_bbox)
+    xmin = min(wgs84_bbox[:, 0])
+    ymin = min(wgs84_bbox[:, 1])
+    xmax = max(wgs84_bbox[:, 0])
+    ymax = max(wgs84_bbox[:, 1])
     
 
     attribute_dict = dict(zip(['geospatial_lon_min', 'geospatial_lat_min', 'geospatial_lon_max', 'geospatial_lat_max'],
@@ -173,26 +178,51 @@ def get_xml_from_uuid(csw_url, uuid):
 
     return csw.records[uuid].xml
 
+def find_files(root_dir, file_template, extension_filter='.nc'):
+    '''
+    Function to simulate the result of a filtered Linux find command
+    Uses glob with user-friendly file system wildcards instead of regular expressions for template matching
+    '''
+    #===========================================================================
+    # file_path_list = sorted([filename for filename in subprocess.check_output(
+    #     ['find', args.netcdf_dir, '-name', args.file_template]).split('\n') if re.search('\.nc$', filename)])
+    #===========================================================================
+    root_dir = os.path.abspath(root_dir)
+    file_path_list = glob(os.path.join(root_dir, file_template))
+    for topdir, subdirs, _files in os.walk(root_dir, topdown=True):
+        for subdir in subdirs:
+            file_path_list += [file_path 
+                               for file_path in glob(os.path.join(topdir, subdir, file_template))
+                               if os.path.splitext(file_path)[1] == extension_filter
+                               ]
+    file_path_list = sorted(file_path_list)    
+    return file_path_list
+
+
 def main():
-    assert len(
-        sys.argv) >= 3 and len(sys.argv) <= 4, 'Usage: %s <root_dir> <file_template> [<xml_dir>]' % sys.argv[0]
-    root_dir = sys.argv[1]
-    file_template = sys.argv[2]
-    if len(sys.argv) == 4:
-        xml_dir = sys.argv[3]
-    else:
-        xml_dir = None
-        
-    xml2nc_mapping = yaml.load()xx #TODO: Finish this
+    # Define command line arguments
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument("-n", "--netcdf_dir", help="NetCDF root directory", type=str, required=True)
+    parser.add_argument("-f", "--file_template", help='NetCDF filename template (default="*.nc")', type=str, default="*.nc")
+    parser.add_argument("-m", "--mapping_file", help="XML to ACDD mapping configuration file path", type=str)
+    parser.add_argument("-x", "--xml_dir", help="XML directory (optional)", type=str)
+    
+    args = parser.parse_args()
+    
+    xml2nc_mapping_path = args.mapping_file or os.path.join(os.path.dirname(__file__), 'config', DEFAULT_MAPPING_FILE)
+    
+    xml2nc_mapping_file = open(xml2nc_mapping_path)
+    xml2nc_mapping = yaml.load(xml2nc_mapping_file)
+    xml2nc_mapping_file.close()
+    pprint(xml2nc_mapping)
 
-    nc_path_list = sorted([filename for filename in subprocess.check_output(
-        ['find', root_dir, '-name', file_template]).split('\n') if re.search('\.nc$', filename)])
-
-    for nc_path in nc_path_list:
-        print 'Updating metadata in %s' % nc_path
+    
+    for nc_path in find_files(args.netcdf_dir, args.file_template):
+        print 'Updating ACDD metadata in netCDF file %s' % nc_path
         
-        if xml_dir:
-            xml_path = os.path.abspath(os.path.join(xml_dir, os.path.splitext(os.path.basename(nc_path))[0] + '.xml'))
+        if args.xml_dir:
+            xml_path = os.path.abspath(os.path.join(args.xml_dir, os.path.splitext(os.path.basename(nc_path))[0] + '.xml'))
         else:
             xml_path = None
 

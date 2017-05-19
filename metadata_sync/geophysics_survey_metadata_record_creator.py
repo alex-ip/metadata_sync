@@ -1,5 +1,9 @@
 '''
-Created on Apr 7, 2016
+geophysics_survey_metadata_record_creator.py
+XML Metadata record creator for geophysical survey datasets
+
+Created on May 17, 2017
+Refactored from create_xml_metadata.py
 
 @author: Alex Ip, Geoscience Australia
 '''
@@ -200,10 +204,10 @@ def main():
     # Define command line arguments
     parser = argparse.ArgumentParser()
     
-    parser.add_argument("-j", "--json_template", help="JSON text template path", type=str)
-    parser.add_argument("-t", "--xml_template", help="XML template path", type=str)
-    parser.add_argument("-n", "--netcdf", help="netcdf file path", type=str)
-    parser.add_argument("-o", "--output", help="XML output path", type=str)
+    parser.add_argument("-j", "--json_template", help="JSON text template path", type=str, required=True)
+    parser.add_argument("-t", "--xml_template", help="XML template path", type=str, required=True)
+    parser.add_argument("-n", "--netcdf", help="netcdf file path", type=str, required=True)
+    parser.add_argument("-o", "--output", help="XML output path", type=str, required=True)
     parser.add_argument("-m", "--doi_mode", help="DOI minting mode (test or prod)", type=str, default='test')
     parser.add_argument("-d", "--db_alias", help="Oracle DB alias (optional)", type=str)
     parser.add_argument("-u", "--db_user", help="Oracle DB user (optional)", type=str)
@@ -216,11 +220,12 @@ def main():
                                                            netcdf_path=args.netcdf, 
                                                            json_text_template_path=args.json_template,
                                                            doi_minting_mode=args.doi_mode,
-                                                           db_user=None, 
-                                                           db_password=None, 
-                                                           db_alias=None)
+                                                           db_alias=args.db_alias,
+                                                           db_user=args.db_user, 
+                                                           db_password=args.db_password
+                                                           )
         
-    print record_creator.__dict__
+    # print record_creator.__dict__
     record_creator.output_xml()
 
 if __name__ == '__main__':

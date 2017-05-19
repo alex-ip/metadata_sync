@@ -4,14 +4,13 @@ Created on 28Oct.,2016
 @author: Alex Ip
 '''
 import os
-from glob import glob
-import subprocess
-import re
 import json
 import dateutil.parser
 from datetime import datetime
 from dateutil import tz
 import pytz
+from glob import glob
+import hashlib
 import logging
 
 logger = logging.getLogger(__name__)
@@ -53,6 +52,39 @@ def get_utc_mtime(file_path):
     return datetime.fromtimestamp(os.path.getmtime(file_path), pytz.utc)
 
 
+
+def get_filtered_md5sum_dict(md5dir, excluded_extensions=[]):
+    '''
+    Simulate filtered Linux md5sum command
+    Code adapted from http://stackoverflow.com/questions/3431825/generating-an-md5-checksum-of-a-file
+    '''
+    return get_md5sums([fname for fname in glob(os.path.join(md5dir, '*'))
+                        if os.path.isfile(fname)
+                        and os.path.splitext(fname)[1] not in excluded_extensions
+                        ]
+                       )
+    
+def get_md5sums(file_path_list, ashexstr=True):
+    '''
+    Generate MD5 checksums for all files named in file_path_list
+    Code adapted from http://stackoverflow.com/questions/3431825/generating-an-md5-checksum-of-a-file
+    '''
+    def hash_bytestr_iter(bytesiter, hasher, ashexstr=ashexstr):
+        for block in bytesiter:
+            hasher.update(block)
+        return (hasher.hexdigest() if ashexstr else hasher.digest())
+     
+    def file_as_blockiter(afile, blocksize=65536):
+        with afile:
+            block = afile.read(blocksize)
+            while len(block) > 0:
+                yield block
+                block = afile.read(blocksize)
+                
+    return {os.path.basename(fname): hash_bytestr_iter(file_as_blockiter(open(fname, 'rb')), hashlib.md5())
+            for fname in file_path_list
+            }
+
 def write_json_metadata(uuid, dataset_folder, excluded_extensions=None):
     '''
     Function to write UUID, file_paths and current timestamp to .metadata.json
@@ -64,23 +96,13 @@ def write_json_metadata(uuid, dataset_folder, excluded_extensions=None):
     dataset_folder = os.path.abspath(dataset_folder)
 
     json_metadata_path = os.path.join(dataset_folder, '.metadata.json')
-
-    file_list = [file_path for file_path in glob(os.path.join(dataset_folder, '*'))
-                 if os.path.splitext(file_path)[1] not in excluded_extensions
-                 and os.path.isfile(file_path)]
-
-    md5_output = subprocess.check_output(['md5sum'] + file_list)
-    md5_dict = {re.search('^(\w+)\s+(.+)$', line).groups()[1]:
-                re.search('^(\w+)\s+(.+)$', line).groups()[0]
-                for line in md5_output.split('\n') if line.strip()
-                }
-
+    md5_dict = get_filtered_md5sum_dict(dataset_folder, excluded_extensions)
     metadata_dict = {'uuid': uuid,
                      'time': get_iso_utcnow(),
                      'folder_path': dataset_folder,
                      'files': [{'file': os.path.basename(filename),
                                 'md5': md5_dict[filename],
-                                'mtime': get_utc_mtime(filename).isoformat()
+                                'mtime': get_utc_mtime(os.path.join(dataset_folder, filename)).isoformat()
                                 }
                                for filename in sorted(md5_dict.keys())
                                ]
@@ -127,15 +149,7 @@ def check_json_metadata(uuid, dataset_folder, excluded_extensions=None):
         report_list.append('Dataset folder Changed from %s to %s' % (
             metadata_dict['folder_path'], dataset_folder))
 
-    file_list = [file_path for file_path in glob(os.path.join(dataset_folder, '*'))
-                 if os.path.splitext(file_path)[1] not in excluded_extensions
-                 and os.path.isfile(file_path)]
-
-    md5_output = subprocess.check_output(['md5sum'] + file_list)
-    calculated_md5_dict = {os.path.basename(re.search('^(\w+)\s+(.+)$', line).groups()[1]):
-                           re.search('^(\w+)\s+(.+)$', line).groups()[0]
-                           for line in md5_output.split('\n') if line.strip()
-                           }
+    calculated_md5_dict = get_filtered_md5sum_dict(dataset_folder, excluded_extensions)
 
     saved_md5_dict = {file_dict['file']:
                       file_dict['md5']
