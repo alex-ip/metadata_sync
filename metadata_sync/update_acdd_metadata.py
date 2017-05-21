@@ -1,5 +1,5 @@
 '''
-Utility to updated ACDD global attributes in NetCDF file using metadata sourced from GeoNetwork
+Utility to update ACDD global attributes in NetCDF files using metadata sourced from GeoNetwork
 Created on Apr 7, 2016
 
 @author: Alex Ip, Geoscience Australia
@@ -10,13 +10,12 @@ import logging
 import yaml
 import numpy as np
 import argparse
-import requests
-from glob import glob
 
 from geophys_utils import NetCDFGridUtils, NetCDFLineUtils, get_spatial_ref_from_crs
 from metadata_sync.metadata import XMLMetadata
 from geophys_utils import DataStats
 from metadata_json import write_json_metadata
+from _metadata_sync_utils import get_xml_from_uuid, find_files
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)  # Initial logging level for this module
@@ -159,36 +158,6 @@ def set_netcdf_metadata_attributes(netcdf_dataset, xml_metadata, xml2nc_mapping,
         
     netcdf_dataset.sync()
     
-
-def get_xml_from_uuid(geonetwork_url, uuid):
-    '''
-    Function to return complete, native (ISO19115-3) XML text for metadata record with specified UUID
-    '''
-    xml_url = '%s/xml.metadata.get?uuid=%s' % (geonetwork_url, uuid)
-    logger.debug('URL = %s' % xml_url)
-    return requests.get(xml_url).content
-
-def find_files(root_dir, file_template, extension_filter='.nc'):
-    '''
-    Function to simulate the result of a filtered Linux find command
-    Uses glob with user-friendly file system wildcards instead of regular expressions for template matching
-    '''
-    #===========================================================================
-    # file_path_list = sorted([filename for filename in subprocess.check_output(
-    #     ['find', args.netcdf_dir, '-name', args.file_template]).split('\n') if re.search('\.nc$', filename)])
-    #===========================================================================
-    root_dir = os.path.abspath(root_dir)
-    file_path_list = glob(os.path.join(root_dir, file_template))
-    for topdir, subdirs, _files in os.walk(root_dir, topdown=True):
-        for subdir in subdirs:
-            file_path_list += [file_path 
-                               for file_path in glob(os.path.join(topdir, subdir, file_template))
-                               if os.path.isfile(file_path)
-                               and os.path.splitext(file_path)[1] == extension_filter
-                               ]
-    file_path_list = sorted(file_path_list)    
-    return file_path_list
-
 
 def main():
     # Define command line arguments

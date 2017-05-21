@@ -5,12 +5,12 @@ Created on Apr 7, 2016
 '''
 import re
 import os
+import logging
 from datetime import datetime
-from xml.dom.minidom import parseString
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from metadata_sync.metadata import Metadata
 from minter import Minter
-import logging
+from _metadata_sync_utils import prettify_xml
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)  # Initial logging level for this module
@@ -31,15 +31,6 @@ class MetadataRecordCreator(object):
         self.doi_minting_mode = doi_minting_mode
         
 
-    def prettify_xml(self, xml_text):
-        '''
-        Helper function to return a prettified XML string
-        '''
-        return parseString(xml_text).toprettyxml(indent="", 
-                                                 newl="", 
-                                                 encoding="utf-8"
-                                                 )        
-    
     def get_xml_text(self):
         '''
         Function to perform substitutions on XML template text AFTER building self.metadata_object contents
@@ -142,8 +133,7 @@ class MetadataRecordCreator(object):
         pass
     
     def output_xml(self):
-        
-        xml_text = self.get_xml_text()
+        xml_text = prettify_xml(self.get_xml_text())
         logger.debug('xml_text = %s' % xml_text)
         xml_file = open(self.xml_output_path, 'w')
         xml_file.write(xml_text)
