@@ -166,7 +166,7 @@ def main():
     parser.add_argument("-n", "--netcdf_dir", help="NetCDF root directory", type=str, required=True)
     parser.add_argument("-f", "--file_template", help='NetCDF filename template (default="*.nc")', type=str, default="*.nc")
     parser.add_argument("-m", "--mapping_file", help="XML to ACDD mapping configuration file path", type=str)
-    parser.add_argument("-x", "--xml_dir", help="XML directory (optional)", type=str)
+    parser.add_argument("-x", "--xml_dir", help="XML directory for input files (optional)", type=str)
     
     args = parser.parse_args()
     

@@ -10,12 +10,14 @@ import re
 import netCDF4
 import argparse
 import tempfile
+import logging
 from lxml import etree
-from xml.dom.minidom import parseString
 from metadata_sync.thredds_catalog import THREDDSCatalog
 from metadata_sync.metadata_json import read_json_metadata
 from _metadata_sync_utils import get_xml_from_uuid, find_files, prettify_xml
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)  # Initial logging level for this module
 
 class XMLUpdater(object):
 
@@ -57,14 +59,15 @@ class XMLUpdater(object):
                                                                                     '',  
                                                                                     thredds_catalog_urls))
                                                                       )[0] + '.yaml'))
-            # print 'yaml_path = %s' % yaml_path
+            logger.debug('yaml_path = %s' % yaml_path)
 
             if os.path.isfile(yaml_path):
                 print 'Loading previously cached catalogue tree from %s' % yaml_path
                 tc = THREDDSCatalog(yaml_path=yaml_path)
             else:
                 print 'Crawling THREDDS catalog %s\nWARNING: This operation may take several hours to complete!' % thredds_catalog_urls
-                tc = THREDDSCatalog(thredds_catalog_urls=thredds_catalog_urls)
+                tc = THREDDSCatalog(thredds_catalog_urls=thredds_catalog_urls, verbose=True)
+                print tc
                 tc.dump(yaml_path)
 
             return tc
@@ -78,17 +81,10 @@ class XMLUpdater(object):
         else:
             self.thredds_catalog = None
             
+        logger.debug('self.thredds_catalog = %s' % self.thredds_catalog)
+        
         self.xml_dir = xml_dir
 
-    def prettify_xml(self, xml_text):
-        '''
-        Helper function to return a prettified XML string
-        '''
-        return parseString(xml_text).toprettyxml(indent="", 
-                                                 newl="", 
-                                                 encoding="utf-8"
-                                                 )        
-    
     def update_xml(self, nc_path, geonetwork_url):
         '''
         Function to read, update and write XML metadata for specified NetCDF file
@@ -273,7 +269,7 @@ class XMLUpdater(object):
                 'WMS_URL': nc_distribution_dict.get('WMS'),
                 'ZIP_HTTP_URL': zip_distribution_dict.get('HTTPServer'),
             }
-            #print template_dict
+            logger.debug('template_dict = %s' % template_dict)
 
             # Read XML template file
             distributionInfo_template_file = open(
@@ -462,6 +458,8 @@ class XMLUpdater(object):
         except Exception as e:
             print xml_text
             raise e
+        
+        logger.debug('xml_text = %s' % xml_text)
 
         # Create backup directory if it doesn't exist
         backup_dir = os.path.abspath(os.path.join(self.xml_dir, 'backup'))
@@ -471,7 +469,7 @@ class XMLUpdater(object):
         # Write original XML into backup file
         backup_path = os.path.join(backup_dir, '%s.bck' % os.path.basename(xml_path))
         backup_file = open(backup_path, 'w')
-        backup_file.write(self.prettify_xml(xml_text))
+        backup_file.write(prettify_xml(xml_text)) # Maybe this shouldn't be prettified
         backup_file.close()
         
         if self.update_bounds:
@@ -526,9 +524,9 @@ def main():
                              xml_dir=args.xml_dir)
 
     for nc_path in find_files(args.netcdf_dir, args.file_template):
-        try:
+        if True:#try:
             xml_updater.update_xml(nc_path, args.geonetwork_url)
-        except Exception as e:
+        else:#except Exception as e:
             print 'XML update failed for %s:\n%s' % (nc_path, e.message)
 
 

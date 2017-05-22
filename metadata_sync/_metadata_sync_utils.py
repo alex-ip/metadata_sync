@@ -42,7 +42,7 @@ def find_files(root_dir, file_template, extension_filter='.nc'):
     file_path_list = sorted(file_path_list)    
     return file_path_list
 
-def prettify_xml(self, xml_text):
+def prettify_xml(xml_text):
     '''
     Helper function to return a prettified XML string
     '''
