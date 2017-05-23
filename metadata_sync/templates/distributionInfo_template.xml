@@ -1,0 +1,1106 @@
+<mdb:MD_Metadata xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/1.0"
+  xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/1.0" xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+  xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0" xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0"
+  xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0" xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
+  xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0" xmlns:mmi="http://standards.iso.org/iso/19115/-3/mmi/1.0"
+  xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0" xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
+  xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:geonet="http://www.fao.org/geonetwork"
+  xsi:schemaLocation="http://standards.iso.org/iso/19115/-3/cat/1.0 http://standards.iso.org/iso/19115/-3/cat/1.0/cat.xsd http://standards.iso.org/iso/19115/-3/cit/1.0 http://standards.iso.org/iso/19115/-3/cit/1.0/cit.xsd http://standards.iso.org/iso/19115/-3/gcx/1.0 http://standards.iso.org/iso/19115/-3/gcx/1.0/gcx.xsd http://standards.iso.org/iso/19115/-3/gex/1.0 http://standards.iso.org/iso/19115/-3/gex/1.0/gex.xsd http://standards.iso.org/iso/19115/-3/lan/1.0 http://standards.iso.org/iso/19115/-3/lan/1.0/lan.xsd http://standards.iso.org/iso/19115/-3/srv/2.0 http://standards.iso.org/iso/19115/-3/srv/2.0/srv.xsd http://standards.iso.org/iso/19115/-3/mas/1.0 http://standards.iso.org/iso/19115/-3/mas/1.0/mas.xsd http://standards.iso.org/iso/19115/-3/mcc/1.0 http://standards.iso.org/iso/19115/-3/mcc/1.0/mcc.xsd http://standards.iso.org/iso/19115/-3/mco/1.0 http://standards.iso.org/iso/19115/-3/mco/1.0/mco.xsd http://standards.iso.org/iso/19115/-3/mda/1.0 http://standards.iso.org/iso/19115/-3/mda/1.0/mda.xsd http://standards.iso.org/iso/19115/-3/mdb/1.0 http://standards.iso.org/iso/19115/-3/mdb/1.0/mdb.xsd http://standards.iso.org/iso/19115/-3/mds/1.0 http://standards.iso.org/iso/19115/-3/mds/1.0/mds.xsd http://standards.iso.org/iso/19115/-3/mdt/1.0 http://standards.iso.org/iso/19115/-3/mdt/1.0/mdt.xsd http://standards.iso.org/iso/19115/-3/mex/1.0 http://standards.iso.org/iso/19115/-3/mex/1.0/mex.xsd http://standards.iso.org/iso/19115/-3/mmi/1.0 http://standards.iso.org/iso/19115/-3/mmi/1.0/mmi.xsd http://standards.iso.org/iso/19115/-3/mpc/1.0 http://standards.iso.org/iso/19115/-3/mpc/1.0/mpc.xsd http://standards.iso.org/iso/19115/-3/mrc/1.0 http://standards.iso.org/iso/19115/-3/mrc/1.0/mrc.xsd http://standards.iso.org/iso/19115/-3/mrd/1.0 http://standards.iso.org/iso/19115/-3/mrd/1.0/mrd.xsd http://standards.iso.org/iso/19115/-3/mri/1.0 http://standards.iso.org/iso/19115/-3/mri/1.0/mri.xsd http://standards.iso.org/iso/19115/-3/mrl/1.0 http://standards.iso.org/iso/19115/-3/mrl/1.0/mrl.xsd http://standards.iso.org/iso/19115/-3/mrs/1.0 http://standards.iso.org/iso/19115/-3/mrs/1.0/mrs.xsd http://standards.iso.org/iso/19115/-3/msr/1.0 http://standards.iso.org/iso/19115/-3/msr/1.0/msr.xsd http://standards.iso.org/iso/19157/-2/mdq/1.0 http://standards.iso.org/iso/19157/-2/mdq/1.0/mdq.xsd http://standards.iso.org/iso/19115/-3/mac/1.0 http://standards.iso.org/iso/19115/-3/mac/1.0/mac.xsd http://standards.iso.org/iso/19115/-3/gco/1.0 http://standards.iso.org/iso/19115/-3/gco/1.0/gco.xsd http://www.opengis.net/gml/3.2 http://schemas.opengis.net/gml/3.2.1/gml.xsd http://www.w3.org/1999/xlink http://www.w3.org/1999/xlink.xsd">
+  <mdb:distributionInfo>
+    <mrd:MD_Distribution>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>NetCDF</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeListValue="distributor"
+                      codeList="codeListLocation#CI_RoleCode" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>National Computational Infrastructure</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6125 3437</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeListValue="voice"
+                                  codeList="codeListLocation#CI_TelephoneTypeCode" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>The Australian National University,
+143 Ward Road</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Acton</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>help@nci.org.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:transferSize>
+                    <gco:Real>%%NC_FILE_SIZE_MB%%</gco:Real>
+                  </mrd:transferSize>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>file://%%NC_FILE_PATH%%</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>FILE:GEO</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:applicationProfile> 
+                        <gco:CharacterString>NCI:Filesystem</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>NetCDF file on NCI filesystem for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Fully qualified pathname of NetCDF file on NCI filesystem for dataset %%UUID%%. Users must be logged onto the NCI network to access this file system. (md5sum=%%NC_FILE_MD5SUM%%)</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Access File"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>FILE:GEO</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>html</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>National Computational Infrastructure</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6125 3437</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>The Australian National University,
+143 Ward Road</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Acton</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>help@nci.org.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>%%THREDDS_CATALOG_URL%%</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:applicationProfile> 
+                        <gco:CharacterString>Unidata:THREDDS Data Server</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>THREDDS catalog page for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>THREDDS catalog page for dataset %%UUID%%</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Information"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>NetCDF</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>National Computational Infrastructure</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6125 3437</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>The Australian National University,
+143 Ward Road</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Acton</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>help@nci.org.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>%%NCSS_URL%%/dataset.html</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>NCSS</gco:CharacterString>
+                      </cit:protocol>
+                       <cit:applicationProfile> 
+                        <gco:CharacterString>Unidata:THREDDS Data Server</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>NCSS for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>NetCDF Subset Service for dataset %%UUID%%</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Download"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>NetCDF</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>National Computational Infrastructure</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6125 3437</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>The Australian National University,
+143 Ward Road</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Acton</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>help@nci.org.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>%%NC_HTTP_URL%%</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:applicationProfile> 
+                        <gco:CharacterString>Unidata:THREDDS Data Server</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>NetCDF file download via HTTP for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>NetCDF file download via HTTP for dataset %%UUID%%</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Download"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>Zipped ERS</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>National Computational Infrastructure</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6125 3437</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>The Australian National University,
+143 Ward Road</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Acton</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>help@nci.org.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>%%ZIP_HTTP_URL%%</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:applicationProfile> 
+                        <gco:CharacterString>Unidata:THREDDS Data Server</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>Zipped ERS file download via HTTP for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Zipped ERS file download via HTTP for dataset %%UUID%%</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Download"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>html</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>National Computational Infrastructure</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6125 3437</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>The Australian National University,
+143 Ward Road</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Acton</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>help@nci.org.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>%%OPENDAP_URL%%</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:LINK-1.0-http--opendap</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:applicationProfile> 
+                        <gco:CharacterString>Unidata:THREDDS Data Server</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>OPeNDAP for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>OPeNDAP Service for dataset %%UUID%%</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Access File"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>WWW:LINK-1.0-http--opendap</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>WCS</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>National Computational Infrastructure</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6125 3437</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>The Australian National University,
+143 Ward Road</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Acton</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>help@nci.org.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>%%WCS_URL%%</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>OGC:WCS</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:applicationProfile> 
+                        <gco:CharacterString>Unidata:THREDDS Data Server</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>WCS for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>OGC Web Coverage Service for dataset %%UUID%%</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Access File"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>OGC:WCS</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>WMS</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>National Computational Infrastructure</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6125 3437</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>The Australian National University,
+143 Ward Road</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Acton</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>help@nci.org.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>%%WMS_URL%%</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>OGC:WMS</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:applicationProfile> 
+                        <gco:CharacterString>Unidata:THREDDS Data Server</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>WMS for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>OGC Web Mapping Service for dataset %%UUID%%</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Access File"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>OGC:WMS</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>html</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>Geoscience Australia</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6249 9966</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6249 9960</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="facsimile" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>GPO Box 378</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Canberra</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>clientservices@ga.gov.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>http://www.geoscience.gov.au/cgi-bin/mapserv?map=/nas/web/ops/prod/apps/mapserver/gadds/wms_map/gadds.map</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:applicationProfile> 
+                        <gco:CharacterString>GA:GADDS Data Server</gco:CharacterString> 
+                      </cit:applicationProfile>  
+                      <cit:name>
+                        <gco:CharacterString>Australian Geophysical Archive Data Delivery System</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Download from Geoscience Australia Geophysical Archive Data Delivery System</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Download"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gco:CharacterString>html</gco:CharacterString>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date gco:nilReason="missing" />
+                  <cit:dateType gco:nilReason="missing" />
+                </cit:CI_Date>
+              </cit:date>
+              <cit:edition>
+                <gco:CharacterString>1</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+          <mrd:formatDistributor>
+            <mrd:MD_Distributor>
+              <mrd:distributorContact>
+                <cit:CI_Responsibility>
+                  <cit:role>
+                    <cit:CI_RoleCode codeList="codeListLocation#CI_RoleCode"
+                      codeListValue="distributor" />
+                  </cit:role>
+                  <cit:party>
+                    <cit:CI_Organisation>
+                      <cit:name>
+                        <gco:CharacterString>Geoscience Australia</gco:CharacterString>
+                      </cit:name>
+                      <cit:contactInfo>
+                        <cit:CI_Contact>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6249 9966</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="voice" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:phone>
+                            <cit:CI_Telephone>
+                              <cit:number>
+                                <gco:CharacterString>+61 2 6249 9960</gco:CharacterString>
+                              </cit:number>
+                              <cit:numberType>
+                                <cit:CI_TelephoneTypeCode
+                                  codeList="codeListLocation#CI_TelephoneTypeCode"
+                                  codeListValue="facsimile" />
+                              </cit:numberType>
+                            </cit:CI_Telephone>
+                          </cit:phone>
+                          <cit:address>
+                            <cit:CI_Address>
+                              <cit:deliveryPoint>
+                                <gco:CharacterString>GPO Box 378</gco:CharacterString>
+                              </cit:deliveryPoint>
+                              <cit:city>
+                                <gco:CharacterString>Canberra</gco:CharacterString>
+                              </cit:city>
+                              <cit:administrativeArea>
+                                <gco:CharacterString>ACT</gco:CharacterString>
+                              </cit:administrativeArea>
+                              <cit:postalCode>
+                                <gco:CharacterString>2601</gco:CharacterString>
+                              </cit:postalCode>
+                              <cit:country>
+                                <gco:CharacterString>Australia</gco:CharacterString>
+                              </cit:country>
+                              <cit:electronicMailAddress>
+                                <gco:CharacterString>clientservices@ga.gov.au</gco:CharacterString>
+                              </cit:electronicMailAddress>
+                            </cit:CI_Address>
+                          </cit:address>
+                        </cit:CI_Contact>
+                      </cit:contactInfo>
+                    </cit:CI_Organisation>
+                  </cit:party>
+                </cit:CI_Responsibility>
+              </mrd:distributorContact>
+              <mrd:distributorTransferOptions>
+                <mrd:MD_DigitalTransferOptions>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>%%DOI%%</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:name>
+                        <gco:CharacterString>Digital Object Identifier for dataset %%UUID%%</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Digital Object Identifier for dataset %%UUID%%</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="codeListLocation#CI_OnLineFunctionCode" codeListValue="Complete Metadata"/>
+                      </cit:function>
+                      <cit:protocolRequest>
+                        <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                      </cit:protocolRequest>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </mrd:MD_DigitalTransferOptions>
+              </mrd:distributorTransferOptions>
+            </mrd:MD_Distributor>
+          </mrd:formatDistributor>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+    </mrd:MD_Distribution>
+  </mdb:distributionInfo>
+</mdb:MD_Metadata>  

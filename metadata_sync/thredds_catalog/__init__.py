@@ -246,7 +246,6 @@ http://dapds00.nci.org.au/thredds/catalog/rr2/National_Coverages/http/catalog.ht
         '''
         Function to return list of (<protocol>, <url>) tuples for a given filename
         Returns empty list for failed match.
-        N.B: Only *nix supported
         '''
         # Narrow down search to tuples matching basename
         basename = os.path.basename(file_path)
@@ -260,7 +259,7 @@ http://dapds00.nci.org.au/thredds/catalog/rr2/National_Coverages/http/catalog.ht
             return []
 
         # Find URL matches for longest possible sub-path
-        find_path = os.path.abspath(file_path)
+        find_path = os.path.abspath(file_path).replace(os.path.sep, '/') # Convert path separators to '/'
         find_list = []
         while find_path and not find_list:
             logger.debug('Searching for %s in URL list' % find_path)
@@ -316,7 +315,7 @@ http://dapds00.nci.org.au/thredds/catalog/rr2/National_Coverages/http/catalog.ht
             return base_list
 
         # Find URL matches for longest possible sub-path
-        find_path = os.path.abspath(file_path)
+        find_path = os.path.abspath(file_path).replace(os.path.sep, '/')
         find_list = []
         while find_path and not find_list:
             logger.debug('Searching for %s in URL list' % find_path)

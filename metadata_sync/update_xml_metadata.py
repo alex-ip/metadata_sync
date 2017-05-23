@@ -17,7 +17,7 @@ from metadata_sync.metadata_json import read_json_metadata
 from _metadata_sync_utils import get_xml_from_uuid, find_files, prettify_xml
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)  # Initial logging level for this module
+logger.setLevel(logging.INFO)  # Initial logging level for this module
 
 class XMLUpdater(object):
 
@@ -44,6 +44,13 @@ class XMLUpdater(object):
 #     # print 'thredds_catalog_urls = %s' % THREDDS_CATALOG_URLS
 #===============================================================================
 
+    # Determine path to distribution info template file
+    DISTRIBUTION_INFO_TEMPLATE_PATH = os.path.abspath(os.path.join(
+        os.path.dirname(__file__),
+        'templates',
+        'distributionInfo_template.xml'
+        ))
+    
     def __init__(self, geonetwork_url, thredds_root_urls, update_bounds=True, update_distributions=True, xml_dir=None):
 
         # TODO: Work out some way of making this faster.
@@ -272,8 +279,7 @@ class XMLUpdater(object):
             logger.debug('template_dict = %s' % template_dict)
 
             # Read XML template file
-            distributionInfo_template_file = open(
-                '../templates/distributionInfo_template.xml')
+            distributionInfo_template_file = open(XMLUpdater.DISTRIBUTION_INFO_TEMPLATE_PATH)
             distributionInfo_template_text = distributionInfo_template_file.read()
             distributionInfo_template_file.close()
 
@@ -524,9 +530,9 @@ def main():
                              xml_dir=args.xml_dir)
 
     for nc_path in find_files(args.netcdf_dir, args.file_template):
-        if True:#try:
+        try:
             xml_updater.update_xml(nc_path, args.geonetwork_url)
-        else:#except Exception as e:
+        except Exception as e:
             print 'XML update failed for %s:\n%s' % (nc_path, e.message)
 
 
